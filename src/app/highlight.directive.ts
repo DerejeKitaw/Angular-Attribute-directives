@@ -15,6 +15,7 @@ export class HighlightDirective {
 
   constructor(private el: ElementRef) { }
 @Input('myHighlight') highlightColor: string;
+@Input() default: string;
 
          
 @HostListener('mouseenter') onMouseEnter() {
