@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Atribuits Directives!';
-  color : string;
+  color : string ;
 }

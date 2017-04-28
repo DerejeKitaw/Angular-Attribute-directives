@@ -14,9 +14,11 @@ import { Directive, ElementRef,Input ,HostListener} from '@angular/core';
 export class HighlightDirective {
 
   constructor(private el: ElementRef) { }
-  
+@Input() highlightColor: string;
+
+         
 @HostListener('mouseenter') onMouseEnter() {
-  this.highlight('yellow');
+  this.highlight(this.highlightColor);
 }
 @HostListener('mouseleave') onMouseLeave() {
   this.highlight(null); //No quate for null
