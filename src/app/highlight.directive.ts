@@ -15,11 +15,11 @@ export class HighlightDirective {
 
   constructor(private el: ElementRef) { }
 @Input('myHighlight') highlightColor: string;
-@Input() default: string;
+@Input() defaultColor: string;
 
          
 @HostListener('mouseenter') onMouseEnter() {
-  this.highlight(this.highlightColor);
+  this.highlight(this.highlightColor || this.defaultColor || 'red');
 }
 @HostListener('mouseleave') onMouseLeave() {
   this.highlight(null); //No quate for null
