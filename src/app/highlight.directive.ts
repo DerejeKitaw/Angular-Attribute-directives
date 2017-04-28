@@ -1,9 +1,10 @@
 /**
- * Directive: provides the functionality of the @Directive decorator.
-  ElementRef: injects into the directive's constructor so the code can access the DOM element.
-       Input: allows data to flow from the binding expression into the directive.
+ * Directive   : provides the functionality of the @Directive decorator.
+   ElementRef  : injects into the directive's constructor so the code can access the DOM element.
+   Input       : allows data to flow from the binding expression into the directive.
+   HostListener: allow to add two eventhandlers that respond when the mouse enters or leaves
  */
-import { Directive, ElementRef,Input } from '@angular/core';
+import { Directive, ElementRef,Input ,HostListener} from '@angular/core';
 
 @Directive({
   //Though highlight is a more concise name than myHighlight and would work, a best practice is to prefix selector names to ensure they don't conflict with standard HTML attributes
@@ -12,9 +13,15 @@ import { Directive, ElementRef,Input } from '@angular/core';
 })
 export class HighlightDirective {
 
-  constructor(el: ElementRef) { 
-    el.nativeElement.style.backgroundColor = 'yellow';
-    
+  constructor(private el: ElementRef) { }
+  
+@HostListener('mouseenter') onMouseEnter() {
+  this.highlight('yellow');
+}
+@HostListener('mouseleave') onMouseLeave() {
+  this.highlight(null); //No quate for null
+}
+private highlight(color: string){
+    this.el.nativeElement.style.backgroundColor = color;
   }
-
 }
